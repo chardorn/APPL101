@@ -58,31 +58,13 @@ classdef testApp < matlab.apps.AppBase
 
                 x_pos = coords(1) + r.*cos(theta);
                 y_pos = coords(2) + r.*sin(theta);
-                plot(app.UIAxes,x_pos,y_pos, '-o','MarkerSize',12, 'Color', app.cmap(app.color_count, :));
+                plot(app.UIAxes,x_pos,y_pos, 'o','MarkerSize',12, 'Color', app.cmap(app.color_count, :));
                 pause(0.1);
             end 
 
             app.Label_3.Text = string(n);
-            
-%             app.UIAxes.XLim = [0 2*pi];
-%             n = 0;
-%             radius = 0.0;
-%             theta = 0.0;
-%             while radius < size
-%                 radius = double(sqrt(n) / 5); % adjusted this to decrease radius
-%                 theta = n * rotation; 
-%                 x_pos = coords(1) + radius*cos(theta);
-%                 y_pos = coords(2) + radius*sin(theta);
-%                 plot(app.UIAxes,x_pos,y_pos, '-ko','MarkerSize',12, 'Color', app.cmap(app.color_count, :));
-%                 hold(app.UIAxes, "on");
-%                 drawnow;
-%                 n = n + 1; 
-%             
-%             app.Label_3.Text = string(n);
-% 
-%             end
-%             hold(app.UIAxes, "off");
-        
+            hold(app.UIAxes, "on");
+                    
             
         end
 
@@ -90,6 +72,12 @@ classdef testApp < matlab.apps.AppBase
         function SizeSliderValueChanged(app, event)
             value = app.SizeSlider.Value;
             app.Label_2.Text = string(value);            
+        end
+        
+        % Button pushed function: ClearButton
+        function ClearButtonPushed(app, event)
+            hold(app.UIAxes, "off");
+           
         end
     end
 
